@@ -1,0 +1,65 @@
+<duet-layout center>
+  <div slot="top" role="region">
+    <duet-spacer breakpoint="large" size="x-large"></duet-spacer>
+    <duet-heading level="h1" visual-level="h2">Pääotsikko</duet-heading>
+    <duet-spacer></duet-spacer>
+  </div>
+
+  <div slot="main">
+    <form [formGroup]="form" (ngSubmit)="handleSubmit($event)">
+      <duet-button variation="primary" (click)="openModalWithNgb()">test with ngb</duet-button>
+      <duet-button variation="primary" (click)="simpleModal()">test</duet-button>
+      <duet-stepper [selected]="currentStep" (duetStepChange)="handleStepChange($event)">
+        <duet-step heading="Perustiedot" formGroupName="investmentAmount">
+          <duet-paragraph>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore etdolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
+          </duet-paragraph>
+          <app-investment-amount [form]="form.get('investmentAmount')" [agreements]="agreements">
+          </app-investment-amount>
+          <duet-spacer></duet-spacer>
+          <duet-button margin="none" variation="primary" (click)="handleNextClick($event)" [disabled]="form.invalid">
+            Seuraava</duet-button>
+        </duet-step>
+
+        <duet-step heading="Tarkemmat tiedot" formGroupName="investmentOrigin">
+          <duet-paragraph>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore etdolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
+          </duet-paragraph>
+          <app-investment-origin [form]="form.get('investmentOrigin')"></app-investment-origin>
+          <duet-spacer></duet-spacer>
+          <duet-button margin="none" variation="primary" (click)="handleNextClick($event)" [disabled]="form.invalid">
+            Seuraava
+          </duet-button>
+        </duet-step>
+
+        <duet-step heading="Yhteenveto">
+          <duet-spacer></duet-spacer>
+          <app-summary [agreement]="selectedAgreement"></app-summary>
+          <duet-spacer></duet-spacer>
+          <duet-button submit margin="none" variation="primary" expand [disabled]="form.invalid"> Lähetä </duet-button>
+        </duet-step>
+      </duet-stepper>
+    </form>
+  </div>
+</duet-layout>
+<duet-modal [active]="completed" heading="You entered the following data:">
+  <pre><code>{{ form.value | json }}</code></pre>
+</duet-modal>
+
+<duet-modal heading="Tarkista tietosi" icon="profile-personal-info" [active]="modalDetails">
+  <form novalidate action="#">
+    <duet-paragraph class="duet-text-center"> Kaikki kentät ovat pakollisia ellei muuten mainita. </duet-paragraph>
+    <duet-spacer size="large"></duet-spacer>
+    <duet-choice-group value="suomi" label="Asiointikieli" direction="horizontal" name="group" responsive>
+      <duet-choice label="Suomi" type="radio" value="suomi" expand></duet-choice>
+      <duet-choice label="Svenska" type="radio" value="svenska" expand></duet-choice>
+      <duet-choice label="English" type="radio" value="english" expand></duet-choice>
+    </duet-choice-group>
+    <duet-input label="Katuosoite" name="streetaddress" placeholder="Kotikatu 123" expand></duet-input>
+    <duet-spacer size="large"></duet-spacer>
+    <duet-button variation="primary" (click)="test()">Jatka</duet-button>
+    <duet-button (click)="hide()">Peruuta</duet-button>
+  </form>
+</duet-modal>
