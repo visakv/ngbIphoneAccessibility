@@ -50,6 +50,7 @@
             "styles": [
               "src/styles.scss"
             ],
+            "aot": true,
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
