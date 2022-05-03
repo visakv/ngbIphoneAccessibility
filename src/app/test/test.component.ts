@@ -19,13 +19,13 @@ export class TestComponent implements OnInit {
 
     hide() {
         console.log('closing...!');
-      //  this.modalActive = false;
+        this.modalActive = false;
         this.activeModal.close(true);
     }
 
     test() {
         console.log('Save button clicked');
-       //  this.modalActive = false;
+        this.modalActive = false;
         this.activeModal.close(false);
     }
 

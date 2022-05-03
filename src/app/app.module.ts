@@ -16,13 +16,16 @@ import { InvestmentAmountComponent } from './investment-amount/investment-amount
 import { InvestmentOriginComponent } from './investment-origin/investment-origin.component';
 import { SummaryComponent } from './summary/summary.component';
 import { TestComponent } from './test/test.component';
+import {
+  NgbActiveModal,
+} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent, IndexPageComponent, HeaderComponent,
     FooterComponent, InvestmentAmountComponent, InvestmentOriginComponent,
     SummaryComponent, TestComponent],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
-  providers: [],
+  providers: [NgbActiveModal],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })

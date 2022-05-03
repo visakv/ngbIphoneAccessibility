@@ -1,4 +1,4 @@
-<duet-modal heading="Duet Modal with NGB" icon="profile-personal-info"  (duetClose)="hide()">
+<duet-modal heading="Duet Modal with NGB" icon="profile-personal-info" [active]="modalActive" (duetClose)="hide()">
     <form novalidate action="#">
         <duet-paragraph class="duet-text-center"> Kaikki kentät ovat pakollisia ellei muuten mainita. </duet-paragraph>
         <duet-spacer size="large"></duet-spacer>

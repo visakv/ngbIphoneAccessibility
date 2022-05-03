@@ -13,6 +13,10 @@ if (environment.production) {
   enableProdMode()
 }
 
+/* if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+  this.isSafari = true
+} */
+
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch(err => console.error(err))

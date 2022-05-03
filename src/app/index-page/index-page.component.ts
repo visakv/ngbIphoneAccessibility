@@ -94,6 +94,6 @@ export class IndexPageComponent {
 
   test() {
     console.log('button clicked');
-     this.modalDetails = false;
+    this.modalDetails = false;
   }
 }
